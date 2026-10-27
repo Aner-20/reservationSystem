@@ -17,5 +17,23 @@ services:
       timeout: 5s
       retries: 5
 
+  reservation-service:
+    build:
+      context: ./reservationService
+      dockerfile: Dockerfile
+    container_name: reservation-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/reservations_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    
+
+
+
 volumes:
   postgres_data:
