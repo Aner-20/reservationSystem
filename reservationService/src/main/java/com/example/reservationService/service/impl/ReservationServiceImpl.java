@@ -27,7 +27,10 @@ public class ReservationServiceImpl implements ReservationService {
     
     @Override
     public ReservationResponse createReservation(CreateReservationRequest request) {
-        // ?
+        // Controlla che l'orario di fine della prenotazione sia successivo all'orario di inizio
+        // isAfter() è un metodo di Java usato con oggetti temporali, come LocalDateTime e LocalTime 
+        // true se il primo orario è successivo al secondo
+        // false altrimenti
         if (!request.getEndTime().isAfter(request.getStartTime())) {
             throw new IllegalArgumentException(
                     "End time must be after start time"
