@@ -53,6 +53,10 @@ public class Reservation {
         OffsetDateTime now = OffsetDateTime.now();
         createdAt = now;
         updatedAt = now;
+
+        if (this.status == null){
+            this.status = ReservationStatus.PENDING;
+        }
     }
 
     @PreUpdate

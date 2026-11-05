@@ -32,6 +32,7 @@ public class CreateReservationRequest {
     private OffsetDateTime startTime;
 
     @NotNull
+    @Future
     private OffsetDateTime endTime;
     
 

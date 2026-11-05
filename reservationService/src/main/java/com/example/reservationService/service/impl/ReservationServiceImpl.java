@@ -39,6 +39,10 @@ public class ReservationServiceImpl implements ReservationService {
 
         Reservation reservation = reservationMapper.toEntity(request);
 
+        if (reservation.getStatus() == null) {
+            reservation.setStatus(ReservationStatus.PENDING); // oppure il valore enum/stringa opportuno
+        }
+
         Reservation savedReservation = reservationRepository.save(reservation);
 
         return reservationMapper.toResponse(savedReservation);
